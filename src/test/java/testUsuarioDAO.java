@@ -18,8 +18,8 @@ public class testUsuarioDAO {
     @Test
     public void testCadastrar() {
         Usuario usuario = new Usuario();
-        usuario.setLogin("mmm");
-        usuario.setNome("math");
+        usuario.setLogin("ppp");
+        usuario.setNome("ppp");
         usuario.setSenha("123");
         usuDAO.salvar(usuario);
 
