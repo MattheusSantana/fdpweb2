@@ -39,7 +39,7 @@ public class testEstadoDAO {
     }
     public static void testBuscarPorId(){
         Estado	estadoRetorno = estadoDAO.buscarPorId(1);
-        JOptionPane.showMessageDialog(null,estadoRetorno);
+        System.out.println(estadoRetorno);
     }
     public static void testBuscarTodos(){
         List<Estado> lista = estadoDAO.buscarTodos();
