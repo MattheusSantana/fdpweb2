@@ -1,4 +1,4 @@
-package br.com.fabricadeprogramador.Persistencias.DAO;
+package br.com.fabricadeprogramador.Persistencias;
 
 import br.com.fabricadeprogramador.entidades.Usuario;
 
@@ -9,7 +9,7 @@ import java.util.List;
 
 
 public interface DAO <T> {
-     void salvar (T obj);
+     T salvar (T obj);
      void excluir (T obj);
      T buscarPorId(int id);
      List<T>buscarTodos();

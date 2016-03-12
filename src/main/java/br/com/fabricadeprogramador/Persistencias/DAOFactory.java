@@ -1,4 +1,4 @@
-package br.com.fabricadeprogramador.Persistencias.DAO;
+package br.com.fabricadeprogramador.Persistencias;
 
 /**
  * Created by Matheus on 28/02/2016.

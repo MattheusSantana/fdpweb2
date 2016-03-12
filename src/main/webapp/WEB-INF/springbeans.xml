@@ -12,6 +12,7 @@
     <tx:annotation-driven/>
     <context:component-scan base-package="br.com.fabricadeprogramador"/> <!-- Scaneador de anotações do projeto-->
 
+
     <bean id="est" class="br.com.fabricadeprogramador.entidades.Estado">
         <property name="uf" value="bh"/>
     </bean>

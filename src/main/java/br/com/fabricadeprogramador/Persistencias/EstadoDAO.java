@@ -1,8 +1,8 @@
-package br.com.fabricadeprogramador.Persistencias.DAO;
+package br.com.fabricadeprogramador.Persistencias;
 
 import br.com.fabricadeprogramador.entidades.Estado;
-import br.com.fabricadeprogramador.entidades.Usuario;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -21,25 +21,17 @@ public class EstadoDAO implements DAO <Estado>{
 
     }
 
-
-    public void salvar (Estado estado){
-        em.getTransaction().begin();
+    @Transactional
+    public Estado salvar (Estado estado){
         em.merge(estado);
-        em.getTransaction().commit();
-        if(estado.getId()== null){
-            System.out.println("salvo");
-        }else{
-            System.out.println("alterado!");
-
-        }
+        return estado;
 
     }
 
+    @Transactional
     public void excluir (Estado estado){
-        em.getTransaction().begin();
         em.remove(estado);
-        em.getTransaction().commit();
-        System.out.println("Excluido!");
+
     }
 
 

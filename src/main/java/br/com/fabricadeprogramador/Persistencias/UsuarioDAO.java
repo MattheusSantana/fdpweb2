@@ -1,4 +1,4 @@
-package br.com.fabricadeprogramador.Persistencias.DAO;
+package br.com.fabricadeprogramador.Persistencias;
 
 import br.com.fabricadeprogramador.entidades.Usuario;
 import org.springframework.stereotype.Repository;
@@ -19,17 +19,14 @@ public class UsuarioDAO implements DAO<Usuario> {
 
 
     public UsuarioDAO() {
-      System.out.println("Instanciando...");
+
     }
 
     @Transactional
-    public void salvar(Usuario usuario) {
+    public Usuario salvar(Usuario usuario) {
         em.merge(usuario);
-        if (usuario.getId() != null) {
-            System.out.println("alterado!");
-        } else {
-            System.out.println("salvo!");
-        }
+
+        return usuario;
 
     }
 
@@ -39,12 +36,12 @@ public class UsuarioDAO implements DAO<Usuario> {
 
     }
 
-    @Override
+    @Transactional
     public Usuario buscarPorId(int id) {
         return em.find(Usuario.class, id);
     }
 
-    @Override
+    @Transactional
     public List<Usuario> buscarTodos() {
         Query query = em.createQuery("select u from Usuario u");//JPQL
         List<Usuario> usuarios = query.getResultList();
