@@ -14,8 +14,6 @@ public class Estado {
     private String uf;
 
     public Estado() {
-
-
     }
 
     public Estado( String uf) {

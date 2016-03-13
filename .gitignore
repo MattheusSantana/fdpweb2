@@ -1,6 +1,6 @@
 
-/lib
-/.idea
-
-/target
+/lib/
+/.idea/
+/.settings
+/target/
 /fdpweb.iml
