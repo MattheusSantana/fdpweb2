@@ -15,6 +15,7 @@ public class Estado {
 
     public Estado() {
 
+
     }
 
     public Estado( String uf) {
