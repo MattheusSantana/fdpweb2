@@ -1,3 +1,3 @@
-/target/
-/.idea/
-fdpweb.iml
+/target/*
+/.idea/*
+/fdpweb.iml
