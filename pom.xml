@@ -38,6 +38,12 @@
             <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
+        <!-- Spring Web-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId></artifactId>
+            <version></version>
+        </dependency>
 
         <!-- Driver JDBC -->
 
@@ -88,6 +94,7 @@
             <artifactId>primefaces</artifactId>
             <version>5.0</version>
         </dependency>
+
 
         <!-- Junit test -->
         <dependency>

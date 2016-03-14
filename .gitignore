@@ -1,6 +1,7 @@
-
-/lib/
-/.idea/
 /.settings
 /target/
-/fdpweb.iml
+/.settings/
+/.classpath
+/.project
+/.springBeans
+fdpweb.iml
