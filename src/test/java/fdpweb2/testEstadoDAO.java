@@ -76,6 +76,7 @@ public class testEstadoDAO {
         estado.setUf("TO");
 
         Estado estadoRetorno = estadoDAO.salvar(estado);
+
         Assert.assertNotNull(estadoDAO.buscarPorId(estadoRetorno.getId()));
         System.out.println(estadoRetorno);
     }
