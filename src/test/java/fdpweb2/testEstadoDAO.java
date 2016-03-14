@@ -5,44 +5,86 @@ import br.com.fabricadeprogramador.Persistencias.DAO.DAOFactory;
 import br.com.fabricadeprogramador.entidades.Estado;
 import br.com.fabricadeprogramador.entidades.Usuario;
 
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
+
 import javax.swing.*;
 import java.util.List;
 
 /**
  * Created by Matheus on 28/02/2016.
  */
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = "file:src/main/webapp/WEB-INF/springbeans.xml")
+@TransactionConfiguration(transactionManager ="transactionManager",defaultRollback = true)
 public class testEstadoDAO {
-    //2 - faz cast para criar um DAO / 1 - Chama metodo da fabrica de DAO passando nome como parametro.
-    static DAO<Usuario> usuarioDAO = DAOFactory.getDAO("UsuarioDAO");
-    static DAO<Estado> estadoDAO = DAOFactory.getDAO("estadoDAO");
-    public static void main(String[] args) {
-          testSalvar();
-        //testAlterar();
-        //testExcluir();
-        //testBuscarPorId();
-        //testBuscarTodos();
-        //testBuscarTodos2();
-    }
+    @Autowired
+    private DAO<Estado> estadoDAO;
 
-    public static void testSalvar(){
-    estadoDAO.salvar(new Estado("MG"));
-    }
+    @Test
+    @Transactional
+    public void testSalvar(){
 
-    public static void testAlterar() {
+      Estado estadoRetorno = estadoDAO.salvar(new Estado("MG"));
+        System.out.println(estadoRetorno);
+        Assert.assertNotNull(estadoDAO.buscarPorId(estadoRetorno.getId()));
+    }
+    @Test
+    @Transactional
+    public void testAlterar() {
         Estado estado = new Estado();
-        estado.setUf("RN");
-        estado.setId(13);
-        estadoDAO.salvar(estado);
+        estado.setUf("MT");
+
+        Estado estadoRetorno1 = estadoDAO.salvar(estado);
+
+        Estado estado1 = new Estado();
+        estado1.setUf("TO");
+        estado1.setId(estadoRetorno1.getId());
+
+        Estado estadoRetorno2 = estadoDAO.salvar(estado1);
+
+        Assert.assertEquals(estadoRetorno1.getId(), estadoRetorno2.getId());
+        Assert.assertNotEquals(estado.getUf(), estadoRetorno2.getUf());
+
     }
-    public static void testExcluir(){
-        estadoDAO.excluir(estadoDAO.buscarPorId(10));
+
+    @Test
+    @Transactional
+    public void testExcluir() {
+        Estado estado = new Estado();
+        estado.setUf("TO");
+
+        Estado estadoRetorno = estadoDAO.salvar(estado);
+
+        estadoDAO.excluir(estadoRetorno);
+
+        Assert.assertNull(estadoDAO.buscarPorId(estadoRetorno.getId()));
+
     }
-    public static void testBuscarPorId(){
-        Estado	estadoRetorno = estadoDAO.buscarPorId(1);
+
+    @Test
+    @Transactional
+    public void testBuscarPorId(){
+        Estado estado = new Estado();
+        estado.setUf("TO");
+
+        Estado estadoRetorno = estadoDAO.salvar(estado);
+        Assert.assertNotNull(estadoDAO.buscarPorId(estadoRetorno.getId()));
         System.out.println(estadoRetorno);
     }
-    public static void testBuscarTodos(){
+
+    @Test
+    @Transactional
+    public void testBuscarTodos(){
         List<Estado> lista = estadoDAO.buscarTodos();
+        assert(lista != null && lista.size()>0);
         for(Estado u : lista){
             System.out.println(u);
         }

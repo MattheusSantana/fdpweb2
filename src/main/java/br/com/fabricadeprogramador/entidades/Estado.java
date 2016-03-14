@@ -35,4 +35,11 @@ public class Estado {
         this.uf = uf;
     }
 
+    @Override
+    public String toString() {
+        return "Estado{" +
+                "id=" + id +
+                ", uf='" + uf + '\'' +
+                '}';
+    }
 }

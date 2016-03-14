@@ -3,6 +3,7 @@ package br.com.fabricadeprogramador.Persistencias.DAO;
 import br.com.fabricadeprogramador.entidades.Estado;
 import br.com.fabricadeprogramador.entidades.Usuario;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -13,6 +14,7 @@ import java.util.List;
  * Created by Matheus on 28/02/2016.
  */
 @Repository
+@Transactional
 public class EstadoDAO implements DAO <Estado>{
     @PersistenceContext
     private EntityManager em;
@@ -21,25 +23,15 @@ public class EstadoDAO implements DAO <Estado>{
 
     }
 
+    @Transactional
+    public Estado salvar (Estado estado){
 
-    public void salvar (Estado estado){
-        em.getTransaction().begin();
-        em.merge(estado);
-        em.getTransaction().commit();
-        if(estado.getId()== null){
-            System.out.println("salvo");
-        }else{
-            System.out.println("alterado!");
-
-        }
+      return  em.merge(estado);
 
     }
-
+    @Transactional
     public void excluir (Estado estado){
-        em.getTransaction().begin();
         em.remove(estado);
-        em.getTransaction().commit();
-        System.out.println("Excluido!");
     }
 
 

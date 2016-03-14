@@ -13,6 +13,7 @@ import java.util.List;
  * Created by Matheus on 28/02/2016.
  */
 @Repository
+@Transactional
 public class UsuarioDAO implements DAO<Usuario> {
     @PersistenceContext
     private EntityManager em;
@@ -23,14 +24,9 @@ public class UsuarioDAO implements DAO<Usuario> {
     }
 
     @Transactional
-    public void salvar(Usuario usuario) {
-        em.merge(usuario);
-        if (usuario.getId() != null) {
-            System.out.println("alterado!");
-        } else {
-            System.out.println("salvo!");
-        }
+    public Usuario salvar(Usuario usuario) {
 
+        return em.merge(usuario);
     }
 
     @Transactional
