@@ -10,6 +10,8 @@
 
     </welcome-file-list>
 
+
+    <!-- Para usar o servlet do JSF -->
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -20,11 +22,21 @@
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
-    <!-- Carregando Spring no contexto web-->
+
+    <!-- Carregando Spring no contexto web para subir junto com o tomcat-->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/springbeans.xml</param-value>
+    </context-param>
+
+    <!-- Para que o Spring escute as requisições do servlet do JSF. -->
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
 
 </web-app>
 

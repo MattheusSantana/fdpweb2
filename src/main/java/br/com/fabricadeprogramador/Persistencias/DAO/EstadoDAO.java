@@ -44,6 +44,13 @@ public class EstadoDAO implements DAO <Estado>{
         List<Estado> estados = query.getResultList();
         return estados;
     }
+
+    @Override
+    public Estado buscarPorLogin(String login) {
+        return null;
+    }
+
+
     public List<Object[]> buscarTodos2 (){
 
         Query query = em.createQuery("select u.id, u.uf from Estado u");//JPQL

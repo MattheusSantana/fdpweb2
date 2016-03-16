@@ -16,12 +16,6 @@
         <property name="uf" value="bh"/>
     </bean>
 
-    <bean id="usu" class="br.com.fabricadeprogramador.entidades.Usuario">
-        <property name="login" value="UsuSpg"/>
-        <property name="nome" value="UsuarioSpring"/>
-        <property name="senha" value="123"/>
-
-    </bean>
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="org.postgresql.Driver"/>
         <property name="url" value="jdbc:postgresql://localhost:5433/fdpweb2"/>

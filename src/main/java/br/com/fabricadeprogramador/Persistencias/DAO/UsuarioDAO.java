@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
@@ -23,13 +24,11 @@ public class UsuarioDAO implements DAO<Usuario> {
       System.out.println("Instanciando...");
     }
 
-    @Transactional
     public Usuario salvar(Usuario usuario) {
 
         return em.merge(usuario);
     }
 
-    @Transactional
     public void excluir(Usuario usuario) {
         em.remove(usuario);
 
@@ -43,7 +42,20 @@ public class UsuarioDAO implements DAO<Usuario> {
     @Override
     public List<Usuario> buscarTodos() {
         Query query = em.createQuery("select u from Usuario u");//JPQL
-        List<Usuario> usuarios = query.getResultList();
+        List<Usuario> usuarios = (List<Usuario>) query.getResultList();
         return usuarios;
+    }
+
+    public Usuario buscarPorLogin(String login) {
+        try {
+            Query query = em.createQuery("select u from Usuario u where u.login=:login");
+            query.setParameter("login", login);
+            query.setMaxResults(1); //Para retornar apenas um resultado caso tenha mais de um.
+            return (Usuario)query.getSingleResult();
+        }catch(NoResultException e){
+        return null;
+
+        }
+
     }
 }

@@ -13,4 +13,6 @@ public interface DAO <T> {
      void excluir (T obj);
      T buscarPorId(int id);
      List<T>buscarTodos();
+
+     T buscarPorLogin(String login);
 }

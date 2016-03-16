@@ -90,6 +90,10 @@ public class testUsuarioDAO {
         Assert.assertNotNull(usuarioDAO.buscarPorId(usuarioRetorno.getId()));
 
     }
+
+
+
+
     @Test
     public void testBuscarTodos(){
         List<Usuario> lista = usuarioDAO.buscarTodos();

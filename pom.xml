@@ -64,6 +64,15 @@
             <version>4.1.0.RELEASE</version>
         </dependency>
 
+        <!--  Spring Web -->
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>4.1.0.RELEASE</version>
+        </dependency>
+
+
         <!-- Data Source Config -->
         <dependency>
             <groupId>commons-dbcp</groupId>
@@ -102,13 +111,7 @@
             <version>5.0</version>
         </dependency>
 
-        <!--  Spring Web -->
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>4.1.0.RELEASE</version>
-        </dependency>
     </dependencies>
 
 
