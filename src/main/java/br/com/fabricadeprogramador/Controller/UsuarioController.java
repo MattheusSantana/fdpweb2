@@ -30,8 +30,8 @@ public class UsuarioController {
     }
 
     public List<Usuario> getUsuarioList() {
-        this.usuarioList = usuarioService.buscarTodos();
-        return usuarioList;
+        // para quando o form acessar o get do usuarioList para printar, ele receba a lista atualizada.
+        return usuarioService.buscarTodos();
     }
 
     public void setUsuarioList(List<Usuario> usuarioList) {
@@ -48,10 +48,21 @@ public class UsuarioController {
 
     public void salvar() {
         try {
-            usuarioService.salvar(usuario);
+            if (usuario.getId()== null)
+                usuarioService.salvar(usuario);
+
+
         } catch (ServiceUsuarioException e) {
             e.printStackTrace();
         }
 
+    }
+
+    public void excluir(Usuario usuario){
+        usuarioService.excluir(usuario);
+    }
+
+    public void editar(Usuario usuario){
+        setUsuario(usuario); // para os campos do form receberem o usuario selecionado no botão editar.
     }
 }
