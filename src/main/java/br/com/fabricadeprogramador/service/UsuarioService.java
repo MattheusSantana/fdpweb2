@@ -32,10 +32,10 @@ public class UsuarioService {
 
         Usuario usuarioRetorno = usuarioDAO.buscarPorId(usuario.getId());
 
-        if (usuario.equals(usuarioRetorno)){
-            usuarioDAO.excluir(usuario);
 
-        }
+            usuarioDAO.excluir(usuarioRetorno);
+
+
     }
 
     public List<Usuario> buscarTodos (){
