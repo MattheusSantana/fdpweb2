@@ -30,7 +30,8 @@ public class UsuarioDAO implements DAO<Usuario> {
     }
 
     public void excluir(Usuario usuario) {
-        em.remove(usuario);
+
+        em.remove(buscarPorId(usuario.getId()));
 
     }
 
