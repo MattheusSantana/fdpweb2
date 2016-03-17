@@ -48,6 +48,16 @@
                 #{usu.login}
             </h:column>
 
+            <h:column>
+                <f:facet name="header">Excluir</f:facet>
+                <h:commandButton actionListener="#{usuarioController.excluir(usu)}" value="excluir" process="@this" />
+
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Editar</f:facet>>
+                <h:commandButton actionListener="#{usuarioController.editar(usu)}" value="editar" process="@this"/>
+            </h:column>
 
         </h:dataTable>
 
