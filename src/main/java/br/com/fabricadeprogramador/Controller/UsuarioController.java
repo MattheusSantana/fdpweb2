@@ -18,6 +18,7 @@ import java.util.List;
 @Controller(value = "usuarioController")
 public class UsuarioController {
 
+
     @Autowired
     private UsuarioService usuarioService;
 
@@ -48,21 +49,34 @@ public class UsuarioController {
 
     public void salvar() {
         try {
-            if (usuario.getId()== null)
+            if (usuario.getId() == null) {
                 usuarioService.salvar(usuario);
-
+                MensagemUtil.mensagemInfo(MensagemUtil.SALVAR_SUCESSO);
+            } else if (usuario.getId() !=null){
+                usuarioService.salvar(usuario);
+                MensagemUtil.mensagemInfo("Alterado!");
+            }
 
         } catch (ServiceUsuarioException e) {
             e.printStackTrace();
+            MensagemUtil.mensagemErro(MensagemUtil.SALVAR_FALHA);
         }
 
     }
 
     public void excluir(Usuario usuario){
-        usuarioService.excluir(usuario);
+        try {
+            usuarioService.excluir(usuario);
+            MensagemUtil.mensagemInfo(MensagemUtil.EXCLUIDO_SUCESSO);
+        } catch (ServiceUsuarioException e) {
+            e.printStackTrace();
+            MensagemUtil.mensagemErro(MensagemUtil.EXCLUSAO_FALHA);
+        }
+
     }
 
     public void editar(Usuario usuario){
         setUsuario(usuario); // para os campos do form receberem o usuario selecionado no botão editar.
+
     }
 }

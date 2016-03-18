@@ -1,6 +1,7 @@
 package fdpweb2;
 
 import br.com.fabricadeprogramador.Persistencias.DAO.DAO;
+import br.com.fabricadeprogramador.Persistencias.DAO.DAOException;
 import br.com.fabricadeprogramador.Persistencias.DAO.UsuarioDAO;
 import br.com.fabricadeprogramador.entidades.Estado;
 import br.com.fabricadeprogramador.entidades.Usuario;
@@ -58,7 +59,7 @@ public class testSpring {
 
     }
     @Test
-    public void testTransactionSpring (){
+    public void testTransactionSpring () throws DAOException {
         DAO<Usuario> usuarioDAO = (DAO<Usuario>) ctx.getBean("usuarioDAO");
         // Pra instanciar um Usuario eu tenho que fazer o cast com o DAO pois usuarioDAO implementa DAO
         // Passo como objeto parametrizado o Usuario, para poder passar usuarios nos métodos.

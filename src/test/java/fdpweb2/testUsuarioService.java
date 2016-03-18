@@ -1,6 +1,7 @@
 package fdpweb2;
 
 import br.com.fabricadeprogramador.Persistencias.DAO.DAO;
+import br.com.fabricadeprogramador.Persistencias.DAO.DAOException;
 import br.com.fabricadeprogramador.Persistencias.DAO.UsuarioDAO;
 import br.com.fabricadeprogramador.entidades.Usuario;
 import br.com.fabricadeprogramador.service.ServiceUsuarioException;
@@ -51,7 +52,11 @@ public class testUsuarioService {
         usuario.setNome("teste");
         usuario.setSenha("123");
 
-        usuarioDAO.salvar(usuario);
+        try {
+            usuarioDAO.salvar(usuario);
+        } catch (DAOException e) {
+            e.printStackTrace();
+        }
 
         usuarioService.salvar(usuario);
 

@@ -1,6 +1,7 @@
 package fdpweb2;
 
 import br.com.fabricadeprogramador.Persistencias.DAO.DAO;
+import br.com.fabricadeprogramador.Persistencias.DAO.DAOException;
 import br.com.fabricadeprogramador.entidades.Usuario;
 import org.junit.Assert;
 import org.junit.Test;
@@ -35,7 +36,12 @@ public class testUsuarioDAO {
         usuario.setNome("uuu");
         usuario.setSenha("123");
 
-        Usuario usuarioRetorno = usuarioDAO.salvar(usuario);
+        Usuario usuarioRetorno = null;
+        try {
+            usuarioRetorno = usuarioDAO.salvar(usuario);
+        } catch (DAOException e) {
+            e.printStackTrace();
+        }
         System.out.println(usuarioRetorno);
         Assert.assertNotNull(usuarioRetorno);
 
@@ -49,7 +55,12 @@ public class testUsuarioDAO {
         usuario.setLogin("teste");
         usuario.setSenha("123");
 
-        Usuario usuarioRetorno1 = usuarioDAO.salvar(usuario);
+        Usuario usuarioRetorno1 = null;
+        try {
+            usuarioRetorno1 = usuarioDAO.salvar(usuario);
+        } catch (DAOException e) {
+            e.printStackTrace();
+        }
 
         Usuario usuario2 = new Usuario();
         usuario2.setNome("teste2");
@@ -57,7 +68,12 @@ public class testUsuarioDAO {
         usuario2.setSenha("123");
         usuario2.setId(usuarioRetorno1.getId());
 
-        Usuario usuarioRetorno2 = usuarioDAO.salvar(usuario2);
+        Usuario usuarioRetorno2 = null;
+        try {
+            usuarioRetorno2 = usuarioDAO.salvar(usuario2);
+        } catch (DAOException e) {
+            e.printStackTrace();
+        }
         //Comparando se o Id dos objetos são os mesmos para o update dar certo.
         Assert.assertEquals(usuarioRetorno1.getId(),usuarioRetorno2.getId());
         //Comparando o nome do primeiro usuario salvo e o nome do mesmo usuario após a alteração.
@@ -72,8 +88,17 @@ public class testUsuarioDAO {
         usuario.setLogin("teste");
         usuario.setSenha("123");
 
-        Usuario usuarioRetorno = usuarioDAO.salvar(usuario);
-        usuarioDAO.excluir(usuarioRetorno);
+        Usuario usuarioRetorno = null;
+        try {
+            usuarioRetorno = usuarioDAO.salvar(usuario);
+        } catch (DAOException e) {
+            e.printStackTrace();
+        }
+        try {
+            usuarioDAO.excluir(usuarioRetorno);
+        } catch (DAOException e) {
+            e.printStackTrace();
+        }
         Assert.assertNull(usuarioDAO.buscarPorId(usuarioRetorno.getId()));
 
 
@@ -86,7 +111,12 @@ public class testUsuarioDAO {
         usuario.setLogin("teste");
         usuario.setSenha("123");
 
-        Usuario usuarioRetorno = usuarioDAO.salvar(usuario);
+        Usuario usuarioRetorno = null;
+        try {
+            usuarioRetorno = usuarioDAO.salvar(usuario);
+        } catch (DAOException e) {
+            e.printStackTrace();
+        }
         Assert.assertNotNull(usuarioDAO.buscarPorId(usuarioRetorno.getId()));
 
     }

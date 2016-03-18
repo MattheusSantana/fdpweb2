@@ -1,6 +1,7 @@
 package fdpweb2;
 
 import br.com.fabricadeprogramador.Persistencias.DAO.DAO;
+import br.com.fabricadeprogramador.Persistencias.DAO.DAOException;
 import br.com.fabricadeprogramador.Persistencias.DAO.DAOFactory;
 import br.com.fabricadeprogramador.entidades.Estado;
 import br.com.fabricadeprogramador.entidades.Usuario;
@@ -30,7 +31,7 @@ public class testEstadoDAO {
 
     @Test
     @Transactional
-    public void testSalvar(){
+    public void testSalvar() throws DAOException {
 
       Estado estadoRetorno = estadoDAO.salvar(new Estado("MG"));
         System.out.println(estadoRetorno);
@@ -38,7 +39,7 @@ public class testEstadoDAO {
     }
     @Test
     @Transactional
-    public void testAlterar() {
+    public void testAlterar() throws DAOException {
         Estado estado = new Estado();
         estado.setUf("MT");
 
@@ -57,7 +58,7 @@ public class testEstadoDAO {
 
     @Test
     @Transactional
-    public void testExcluir() {
+    public void testExcluir() throws DAOException {
         Estado estado = new Estado();
         estado.setUf("TO");
 
@@ -71,7 +72,7 @@ public class testEstadoDAO {
 
     @Test
     @Transactional
-    public void testBuscarPorId(){
+    public void testBuscarPorId() throws DAOException {
         Estado estado = new Estado();
         estado.setUf("TO");
 

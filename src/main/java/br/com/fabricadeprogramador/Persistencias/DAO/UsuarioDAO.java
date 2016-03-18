@@ -21,18 +21,24 @@ public class UsuarioDAO implements DAO<Usuario> {
 
 
     public UsuarioDAO() {
-      System.out.println("Instanciando...");
+
     }
 
-    public Usuario salvar(Usuario usuario) {
-
-        return em.merge(usuario);
+    public Usuario salvar(Usuario usuario) throws DAOException {
+        try {
+            return em.merge(usuario);
+        }catch (Exception e){
+            throw new DAOException("Erro ao salvar");
+        }
     }
 
-    public void excluir(Usuario usuario) {
+    public void excluir(Usuario usuario) throws DAOException {
+        try {
+            em.remove(buscarPorId(usuario.getId()));
+        }catch (Exception e){
+            throw new DAOException("Erro ao excluir");
 
-        em.remove(buscarPorId(usuario.getId()));
-
+        }
     }
 
     @Override
@@ -42,7 +48,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 
     @Override
     public List<Usuario> buscarTodos() {
-        Query query = em.createQuery("select u from Usuario u");//JPQL
+        Query query = em.createQuery("select u from Usuario u order by u.id");//JPQL
         List<Usuario> usuarios = (List<Usuario>) query.getResultList();
         return usuarios;
     }

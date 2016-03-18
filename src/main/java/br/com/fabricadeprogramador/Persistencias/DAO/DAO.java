@@ -9,8 +9,8 @@ import java.util.List;
 
 
 public interface DAO <T> {
-     T salvar (T obj);
-     void excluir (T obj);
+     T salvar (T obj) throws DAOException;
+     void excluir (T obj) throws DAOException;
      T buscarPorId(int id);
      List<T>buscarTodos();
 
