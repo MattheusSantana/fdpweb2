@@ -28,6 +28,8 @@
 
     <h:form>
 
+        <h:messages/>
+
         <h:dataTable value="#{usuarioController.usuarioList}" var="usu" border="1">
             <f:facet name="header">
                 Lista de Usuários
@@ -51,7 +53,6 @@
             <h:column>
                 <f:facet name="header">Excluir</f:facet>
                 <h:commandButton actionListener="#{usuarioController.excluir(usu)}" value="excluir" process="@this" />
-
             </h:column>
 
             <h:column>
