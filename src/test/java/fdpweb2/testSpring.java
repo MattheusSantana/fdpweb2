@@ -2,7 +2,6 @@ package fdpweb2;
 
 import br.com.fabricadeprogramador.Persistencias.DAO.DAO;
 import br.com.fabricadeprogramador.Persistencias.DAO.DAOException;
-import br.com.fabricadeprogramador.Persistencias.DAO.UsuarioDAO;
 import br.com.fabricadeprogramador.entidades.Estado;
 import br.com.fabricadeprogramador.entidades.Usuario;
 import org.apache.commons.dbcp.BasicDataSource;

@@ -12,7 +12,17 @@
 
 </h:head>
 <h:body>
+
+
     <h:form>
+        <p:outputLabel value="Perfil"/>
+        <h:selectOneMenu value="#{usuarioController.usuario.perfil}" converter="#{perfilConverter}">
+            <f:selectItem itemValue="" itemLabel="Selecione" noSelectionOption="true"/>
+            <f:selectItems value="#{perfilController.perfis}" var="perfil" itemLabel="#{perfil.descricao}"></f:selectItems>
+
+        </h:selectOneMenu>
+
+
         Nome:
         <h:inputText value="#{usuarioController.usuario.nome}" required="true"/>
 
@@ -24,6 +34,7 @@
 
         <h:commandButton actionListener="#{usuarioController.salvar()}" value="Salvar"/>
 
+        <h:commandButton actionListener="#{usuarioController.cancelar()}" value="Cancelar"/>
     </h:form>
 
     <h:form>
@@ -39,6 +50,12 @@
                 <f:facet name="header">Id</f:facet>
                 #{usu.id}
             </h:column>
+
+            <h:column>
+                <f:facet name="header">Perfil</f:facet>
+                #{usu.perfil.descricao}
+            </h:column>
+
 
             <h:column>
                 <f:facet name="header">Nome:</f:facet>

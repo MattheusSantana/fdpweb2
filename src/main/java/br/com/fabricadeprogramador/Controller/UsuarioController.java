@@ -64,6 +64,11 @@ public class UsuarioController {
 
     }
 
+    public void cancelar (){
+        Usuario usuario = new Usuario();
+
+    }
+
     public void excluir(Usuario usuario){
         try {
             usuarioService.excluir(usuario);

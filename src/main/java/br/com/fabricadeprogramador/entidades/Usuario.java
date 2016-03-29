@@ -18,6 +18,11 @@ public class Usuario {
     @Column(nullable=false,length=20)
     private String senha;
 
+    @ManyToOne
+    @JoinColumn
+    private Perfil perfil;
+
+
     public Usuario() {
 
     }
@@ -51,6 +56,12 @@ public class Usuario {
     }
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+    public Perfil getPerfil() {
+        return perfil;
+    }
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
     }
 
     @Override

@@ -1,7 +1,6 @@
 package br.com.fabricadeprogramador.Persistencias.DAO;
 
 import br.com.fabricadeprogramador.entidades.Estado;
-import br.com.fabricadeprogramador.entidades.Usuario;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 

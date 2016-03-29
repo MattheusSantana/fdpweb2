@@ -2,10 +2,8 @@ package fdpweb2;
 
 import br.com.fabricadeprogramador.Persistencias.DAO.DAO;
 import br.com.fabricadeprogramador.Persistencias.DAO.DAOException;
-import br.com.fabricadeprogramador.Persistencias.DAO.DAOFactory;
-import br.com.fabricadeprogramador.entidades.Estado;
-import br.com.fabricadeprogramador.entidades.Usuario;
 
+import br.com.fabricadeprogramador.entidades.Estado;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,7 +13,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.swing.*;
 import java.util.List;
 
 /**
