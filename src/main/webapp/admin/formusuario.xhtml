@@ -1,83 +1,83 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-
->
-
+      xmlns:p="http://primefaces.org/ui"   >
 
 <h:head>
 
 </h:head>
 <h:body>
+    <ui:include src="menu.xhtml" />
 
 
     <h:form>
         <p:outputLabel value="Perfil"/>
-        <h:selectOneMenu value="#{usuarioController.usuario.perfil}" converter="#{perfilConverter}">
+        <p:selectOneMenu value="#{usuarioController.usuario.perfil}" converter="#{perfilConverter}">
             <f:selectItem itemValue="" itemLabel="Selecione" noSelectionOption="true"/>
-            <f:selectItems value="#{perfilController.perfis}" var="perfil" itemLabel="#{perfil.descricao}"></f:selectItems>
+            <f:selectItems value="#{perfilController.perfis}" var="perfil"
+                           itemLabel="#{perfil.descricao}"></f:selectItems>
 
-        </h:selectOneMenu>
+        </p:selectOneMenu>
 
 
         Nome:
-        <h:inputText value="#{usuarioController.usuario.nome}" required="true"/>
+        <p:inputText value="#{usuarioController.usuario.nome}" required="true"/>
 
         Login:
-        <h:inputText value="#{usuarioController.usuario.login}" required="true"/>
+        <p:inputText value="#{usuarioController.usuario.login}" required="true"/>
 
         Senha:
-        <h:inputText value="#{usuarioController.usuario.senha}" required="true"/>
+        <p:inputText value="#{usuarioController.usuario.senha}" />
 
-        <h:commandButton actionListener="#{usuarioController.salvar()}" value="Salvar"/>
+        <p:commandButton actionListener="#{usuarioController.salvar()}" value="Salvar" update="@form"/>
 
-        <h:commandButton actionListener="#{usuarioController.cancelar()}" value="Cancelar"/>
+        <p:commandButton actionListener="#{usuarioController.cancelar()}" value="Cancelar"/>
     </h:form>
 
     <h:form>
 
-        <h:messages/>
 
-        <h:dataTable value="#{usuarioController.usuarioList}" var="usu" border="1">
-            <f:facet name="header">
-                Lista de Usuários
-            </f:facet>
 
-            <h:column>
-                <f:facet name="header">Id</f:facet>
+        <p:dataTable value="#{usuarioController.usuarioList}" var="usu" border="1">
+            <h:messages/>
+
+
+
+            <p:column headerText="ID">
+
                 #{usu.id}
-            </h:column>
+            </p:column>
 
-            <h:column>
-                <f:facet name="header">Perfil</f:facet>
+            <p:column headerText="Perfil">
+
                 #{usu.perfil.descricao}
-            </h:column>
+            </p:column>
 
 
-            <h:column>
-                <f:facet name="header">Nome:</f:facet>
+            <p:column headerText="Nome">
+
                 #{usu.nome}
-            </h:column>
+            </p:column>
 
-            <h:column>
-                <f:facet name="header">Login:</f:facet>
+            <p:column headerText="Login">
+
                 #{usu.login}
-            </h:column>
+            </p:column>
 
-            <h:column>
-                <f:facet name="header">Excluir</f:facet>
-                <h:commandButton actionListener="#{usuarioController.excluir(usu)}" value="excluir" process="@this" />
-            </h:column>
+            <p:column headerText="Excluir">
 
-            <h:column>
-                <f:facet name="header">Editar</f:facet>>
-                <h:commandButton actionListener="#{usuarioController.editar(usu)}" value="editar" process="@this"/>
-            </h:column>
+                <p:commandButton actionListener="#{usuarioController.excluir(usu)}" value="excluir" update="@form"/>
+            </p:column>
 
-        </h:dataTable>
+            <p:column headerText="Editar">
+
+                <p:commandButton actionListener="#{usuarioController.editar(usu)}" value="editar" process="@this" update="@form"/>
+            </p:column>
+
+        </p:dataTable>
 
 
     </h:form>
