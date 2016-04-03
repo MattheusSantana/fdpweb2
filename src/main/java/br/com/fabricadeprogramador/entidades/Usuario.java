@@ -21,6 +21,8 @@ public class Usuario {
     @ManyToOne
     @JoinColumn
     private Perfil perfil;
+    private Boolean ativo;
+
 
 
     public Usuario() {
@@ -62,6 +64,13 @@ public class Usuario {
     }
     public void setPerfil(Perfil perfil) {
         this.perfil = perfil;
+    }
+    public boolean getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
     }
 
     @Override
